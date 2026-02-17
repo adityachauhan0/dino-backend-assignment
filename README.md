@@ -2,6 +2,7 @@
 
 This project is a high-performance **Internal Wallet Service** developed as part of the backend engineer assignment for **Dino Ventures**. It provides a robust, ledger-based system for managing application-specific credits with strict data integrity and concurrency controls.
 
+Note. the database is automatically seeded with the docker package.
 ---
 
 ## 🏗️ Architecture & Philosophy
@@ -31,7 +32,7 @@ The fastest way to run the service is using Docker Compose, which spins up the a
 
 ```bash
 # Clone the repository
-git clone <repo-url>
+git clone https://github.com/adityachauhan0/dino-backend-assignment.git
 cd dino-backend-assignment
 
 # Start the services
