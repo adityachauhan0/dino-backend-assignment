@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "lib": ["ESNext"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+        "outDir": "./dist",
+        "rootDir": "src",
+        "resolveJsonModule": true,
+            "types": ["node", "jest"]
+          },
+            "exclude": ["node_modules", "dist", "tests", "prisma"]
+          }
+          

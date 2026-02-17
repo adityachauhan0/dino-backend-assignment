@@ -1,0 +1,56 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  email     String   @unique
+  wallets   Wallet[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Asset {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  code      String   @unique // e.g., GC for Gold Coins
+  wallets   Wallet[]
+  createdAt DateTime @default(now())
+}
+
+model Wallet {
+  id               String        @id @default(uuid())
+  userId           String?
+  user             User?         @relation(fields: [userId], references: [id])
+  assetId          String
+  asset            Asset         @relation(fields: [assetId], references: [id])
+  balance          Float         @default(0) // Consider using Decimal for production
+  type             String        // USER, SYSTEM
+  outgoingTransactions Transaction[] @relation("FromWallet")
+  incomingTransactions Transaction[] @relation("ToWallet")
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@unique([userId, assetId])
+}
+
+model Transaction {
+  id               String   @id @default(uuid())
+  fromWalletId     String
+  fromWallet       Wallet   @relation("FromWallet", fields: [fromWalletId], references: [id])
+  toWalletId       String
+  toWallet         Wallet   @relation("ToWallet", fields: [toWalletId], references: [id])
+  amount           Float
+  type             String   // TOP_UP, BONUS, PURCHASE
+  idempotencyKey   String   @unique
+  metadata         String?  // JSON string for metadata
+  createdAt        DateTime @default(now())
+}
