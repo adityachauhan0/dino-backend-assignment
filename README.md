@@ -2,7 +2,8 @@
 
 This project is a high-performance **Internal Wallet Service** developed as part of the backend engineer assignment for **Dino Ventures**. It provides a robust, ledger-based system for managing application-specific credits with strict data integrity and concurrency controls.
 
-Note. the database is automatically seeded with the docker package.
+**Live URL:** [https://dino-backend-assignment.onrender.com](https://dino-backend-assignment.onrender.com)
+
 ---
 
 ## 🏗️ Architecture & Philosophy
