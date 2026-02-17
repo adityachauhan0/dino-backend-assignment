@@ -27,6 +27,22 @@ The service is built on three core pillars:
 
 ---
 
+## 🌐 Live Verification
+
+The application is deployed and ready for immediate testing.
+
+### Quick Test (Check Alice's Balance)
+```bash
+curl https://dino-backend-assignment.onrender.com/api/v1/wallets/balance/fa305152-cac8-4af7-8843-ce37eff7d4d3
+```
+
+### Key Deployment Achievements
+- **Ledger Architecture:** Fully implemented with PostgreSQL.
+- **Free Hosting:** Neon (Database) + Render (App) with automated CI/CD.
+- **Data Integrity:** Automatic migrations and seeding on every push.
+
+---
+
 ## 🚀 Quick Start (Docker)
 
 The fastest way to run the service is using Docker Compose, which spins up the application and a PostgreSQL database.
